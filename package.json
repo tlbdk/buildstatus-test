@@ -1,0 +1,26 @@
+{
+  "name": "buildstatus-test",
+  "version": "1.0.0",
+  "description": "Small test project",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tlbdk/buildstatus-test.git"
+  },
+  "author": "Troels Liebe Bentsen <tlb@nversion.dk>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tlbdk/buildstatus-test/issues"
+  },
+  "homepage": "https://github.com/tlbdk/buildstatus-test#readme",
+  "engines": {
+    "node": "^6.10.3",
+    "npm": "^3.10.10"
+  },
+  "dependencies": {
+  }
+}
