@@ -3,7 +3,13 @@ const http = require('http')
 const listenPort = 3000
 const server = http.createServer((request, response) => {  
   console.log(request.url)
-  response.end(JSON.stringify(request.headers))
+  if (request.url === "/healthz") {
+    response.end('OK')
+  } else if (request.url === "/readiness") {
+    response.end('OK')
+  } else {
+    response.end(JSON.stringify(request.headers))
+  }
 })
 
 server.listen(listenPort, (err) => {  
