@@ -8,6 +8,7 @@ const server = http.createServer((request, response) => {
   } else if (request.url === "/readiness") {
     response.end('OK')
   } else {
+    response.write("v2\n")
     response.end(JSON.stringify(request.headers))
   }
 })
