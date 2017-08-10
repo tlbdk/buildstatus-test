@@ -1,6 +1,6 @@
 FROM launcher.gcr.io/google/nodejs
 
-WORKDIR /src
+WORKDIR /app
 
 EXPOSE 3000
 
