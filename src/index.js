@@ -1,7 +1,7 @@
 const http = require('http')
 const fs = require('fs')
 
-let buildSha = readBuildSha()
+let commitSha = readCommitSha()
 
 const listenPort = 3000
 const server = http.createServer((request, response) => {  
@@ -11,7 +11,7 @@ const server = http.createServer((request, response) => {
     response.end('OK')
   } else {
     console.log(request.url)
-    response.write(`Build SHA: ${buildSha}\n`)
+    response.write(`Build commit SHA: ${commitSha}\n`)
     response.end(JSON.stringify(request.headers))
   }
 })
@@ -24,8 +24,8 @@ server.listen(listenPort, (err) => {
   console.log(`server is listening on ${listenPort}`)
 })
 
-function readBuildSha(path = `${__dirname}/../buildsha.txt`) {  
-  console.log(`Reading buildsha from ${path}`)
+function readCommitSha(path = `${__dirname}/../commitsha.txt`) {  
+  console.log(`Reading commitsha from ${path}`)
   if(fs.existsSync(path)) {
     return fs.readFileSync(path)
   } else {

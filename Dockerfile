@@ -3,8 +3,8 @@ FROM launcher.gcr.io/google/nodejs
 WORKDIR /app
 
 # Save buildsha
-ARG BUILDSHA=unknown
-RUN echo -n ${BUILDSHA} > buildsha.txt
+ARG COMMIT_SHA=unknown
+RUN echo -n ${COMMIT_SHA} > commitsha.txt
 
 EXPOSE 3000
 
