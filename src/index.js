@@ -6,7 +6,14 @@ let commitSha = readCommitSha()
 const listenPort = 3000
 const server = http.createServer((request, response) => {  
   if (request.url === "/healthz") {
-    response.end('OK')
+    fs.exists(`${__dirname}/../stopping.txt`, (exists) => {
+      if(exists) {
+        response.statusCode = 503;
+        response.end('Stopping')
+      } else {
+        response.end('OK')
+      }
+    })
   } else if (request.url === "/readiness") {
     response.end('OK')
   } else {
