@@ -1,4 +1,4 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '--buildargs', 'COMMIT_SHA=$COMMIT_SHA', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:latest', '.']
+    args: ['build', '--build-arg', 'COMMIT_SHA=$COMMIT_SHA', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:latest', '.']
 images: ['gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA', 'gcr.io/$PROJECT_ID/$REPO_NAME:latest']
