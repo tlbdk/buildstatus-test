@@ -6,14 +6,7 @@ let commitSha = readCommitSha()
 const listenPort = 3000
 const server = http.createServer((request, response) => {  
   if (request.url === "/healthz") {
-    fs.exists(`${__dirname}/../stopping.txt`, (exists) => {
-      if(exists) {
-        response.statusCode = 503;
-        response.end('Stopping')
-      } else {
-        response.end('OK')
-      }
-    })
+    response.end('OK')
   } else if (request.url === "/readiness") {
     response.end('OK')
   } else {
@@ -31,6 +24,13 @@ server.listen(listenPort, (err) => {
 
   console.log(`server is listening on ${listenPort}`)
 })
+
+process.on('SIGTERM', function () {
+  console.log("Got SIGTERM")
+  server.close(function () {
+    process.exit(0)
+  });
+});
 
 function readCommitSha(path = `${__dirname}/../commitsha.txt`) {  
   console.log(`Reading commitsha from ${path}`)
