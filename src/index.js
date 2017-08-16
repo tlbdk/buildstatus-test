@@ -11,6 +11,7 @@ const server = http.createServer((request, response) => {
     response.end('OK')
   } else {
     console.log(request.url)
+    response.write(`Fancy testing feature\n`)
     response.write(`Build commit SHA: ${commitSha}\n`)
     response.end(JSON.stringify(request.headers))
   }
