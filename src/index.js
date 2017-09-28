@@ -11,7 +11,7 @@ const server = http.createServer((request, response) => {
     response.end('OK')
   } else {
     console.log(request.url)
-    response.write(`Fancy testing feature\n`)
+    response.write(`Fancy testing feature abcd v1\n`)
     response.write(`Build commit SHA: ${commitSha}\n`)
     response.end(JSON.stringify(request.headers))
   }
@@ -24,6 +24,13 @@ server.listen(listenPort, (err) => {
 
   console.log(`server is listening on ${listenPort}`)
 })
+
+process.on('SIGTERM', function () {
+  console.log("Got SIGTERM")
+  server.close(function () {
+    process.exit(0)
+  });
+});
 
 function readCommitSha(path = `${__dirname}/../commitsha.txt`) {  
   console.log(`Reading commitsha from ${path}`)
